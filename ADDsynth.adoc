@@ -80,7 +80,21 @@ The Envelopes share the same basic parameters:
 - *Forced release:* If this option is turned on the release will go to the final value, even if the sustain stage is not reached.
 - *Repeat:* If this option is active the envelope is started again when reaching release
 
+Besides modifying the envelopes with parameters you can use the controlpoints in the plot.
+Since Release XY there are two kinds of control points. 
+The classic ones are control values the envelope should reach and the duration to reach this value.
+In each segment between two of those "old" control points there are two additional points that control the form of the curve in that segment.
 
+[NOTE] 
+Restricted Beziers
+======
+To enable curved envelopes we use beziers. 
+To keep backwards compatibility and prevent strange things like backwards running envelopes they are a bit constrained.
+- you can drag them only in the y axis.
+- by default they are on the straight line between the old controll points.
+
+
+======
 ===== Amplitude Envelopes
 Amplitude envelopes control the amplitude of the sound.
 
@@ -183,10 +197,22 @@ This is your oscillator and modulator-oscillator. Full documentation link:Oscill
 
 image::imgs/add-synth-modulation-none.png[]
 
+When doing audio rate modulation (opposing to LFOs and ENVs) we use this terminology:
+
+- *Carrier:* The waveform that is being modulated
+- *Modulator:* The waveform that modulated the carrier
+- *Depth:* The amount of modulation applied to the carrier
+
+The depth is controlled via amplitude of the modulator using the "Vol."-knob and the amplitude envelope.
+The modulator can be the voices own mod-osc or one of the other voices. 
+
+.Computation Order
+NOTE: Only voices with a lower number than the carrier can be modulators. That's because they have to be calculated before using them.
+
 
 ===== Mix
 Mix is actually not a modulation type but something like wave morphing or one dimension of a vector synthesis.
-The modulation amount set with the "Vol." knob and the Amp envelope represents the mixing ratio between "modulator" and "carrier" oscillator.
+The modulation amount set with the "Vol." knob and the Amp envelope represents the mixing ratio between modulator and carrier oscillator.
 
 image::imgs/add-synth-modulation-mix.png[]
 
@@ -197,6 +223,12 @@ Used with sine oscillators for both modulator and carrier that adds the sum and 
 It can be used to create inharmonics for metallic or bell like sounds.
 
 image::imgs/add-synth-modulation-ring.png[]
+
+===== AM
+AM modulation is similar to ring modulation. But the modulator is shifted to positive values only before multiplying.
+That makes the resulting signal containing the original carrier frequency.
+
+image::imgs/add-synth-modulation-am.png[]
 
 ===== Phase
 The value of the modulator is applied as phase offset. That's what Yamaha called FM in the famous DX7.
