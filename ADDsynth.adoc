@@ -80,7 +80,8 @@ The Envelopes share the same basic parameters:
 - *Forced release:* If this option is turned on the release will go to the final value, even if the sustain stage is not reached.
 - *Repeat:* If this option is active the envelope is started again when reaching release
 
-Besides modifying the envelopes with parameters you can use the controlpoints in the plot.
+===== Control Points - NEW FEATURE
+Besides modifying the envelopes with parameters you can use the control points in the plot.
 Since Release XY there are two kinds of control points. 
 The classic ones are control values the envelope should reach and the duration to reach this value.
 In each segment between two of those "old" control points there are two additional points that control the form of the curve in that segment.
@@ -224,7 +225,7 @@ Therefor it can be used to create inharmonics for metallic or bell like sounds.
 
 image::imgs/add-synth-modulation-ring.png[]
 
-===== AM
+===== AM - NEW FEATURE
 AM modulation is similar to ring modulation. But the modulator is shifted to positive values only before multiplying.
 That makes the resulting signal also containing the original carrier frequency. Therefor the effect is more subtle.
 
@@ -254,7 +255,7 @@ An enhancement of phase modulation with pairs om mirrored modulators
 image::imgs/add-synth-modulation-pwm.png[]
 
 
-===== SYNC
+===== SYNC - NEW FEATURE
 This is a classic hard oscillator sync. Everytime the modulator has a rising zero crossing the phase of the carrier is reset to 0 meaning that 
 
 [NOTE]
