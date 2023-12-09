@@ -204,7 +204,7 @@ When doing audio rate modulation (opposing to LFOs and ENVs) we use this termino
 - *Depth:* The amount of modulation applied to the carrier
 
 The depth is controlled via amplitude of the modulator using the "Vol."-knob and the amplitude envelope.
-The modulator can be the voices own mod-osc or one of the other voices. 
+The modulator can be the voices own (mod-osc) or one of the other voices. 
 
 .Computation Order
 NOTE: Only voices with a lower number than the carrier can be modulators. That's because they have to be calculated before using them.
@@ -219,14 +219,14 @@ image::imgs/add-synth-modulation-mix.png[]
 ===== Ring
 Ring modulation was used in the Roland D50 but also in many classic analog synthesizers for example from Oberheim.
 The values of modulator and carrier are simply multiplied.
-Used with sine oscillators for both modulator and carrier that adds the sum and the difference of their frequencies to the spectrum.
-It can be used to create inharmonics for metallic or bell like sounds.
+Used with sine oscillators for both modulator and carrier the spectrum contains sum and the difference of their frequencies.
+Therefor it can be used to create inharmonics for metallic or bell like sounds.
 
 image::imgs/add-synth-modulation-ring.png[]
 
 ===== AM
 AM modulation is similar to ring modulation. But the modulator is shifted to positive values only before multiplying.
-That makes the resulting signal containing the original carrier frequency.
+That makes the resulting signal also containing the original carrier frequency. Therefor the effect is more subtle.
 
 image::imgs/add-synth-modulation-am.png[]
 
@@ -252,6 +252,19 @@ image::imgs/add-synth-modulation-fm.png[]
 An enhancement of phase modulation with pairs om mirrored modulators
 
 image::imgs/add-synth-modulation-pwm.png[]
+
+
+===== SYNC
+This is a classic hard oscillator sync. Everytime the modulator has a rising zero crossing the phase of the carrier is reset to 0 meaning that 
+
+[NOTE]
+Using Hard Oscillator Sync
+====
+You can create a nice zeeeeooooo sound by enabling SYNC in voice 2 using a saw wave as carrier and the voice MOD 1 as modulator.
+Then you enable the frequency envelope of the carrier (voice 2) and drag the envelope the way you like it.
+The specific caracter of that sound comes from the changing fequency difference of modulator and carrier.
+Keep in mind the the resulting fundamental frequency is determinated by the pitch of the modulator.
+====
 
 ==== voice list
 image::imgs/add-synth-voice-list.png[]
